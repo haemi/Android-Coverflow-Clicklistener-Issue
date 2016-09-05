@@ -60,10 +60,15 @@ public class Normal2Activity extends AppCompatActivity {
             view.setText("Item "+position);
             view.setGravity(Gravity.CENTER);
             view.setBackgroundColor(Color.argb(255, position * 50, position * 10, position * 50));
+            view.setTag(position);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(Normal2Activity.this, "Position: " + position, Toast.LENGTH_SHORT).show();
+
+                    int pos = Integer.parseInt(v.getTag().toString());
+                    Toast.makeText(Normal2Activity.this, "position: " + pos, Toast.LENGTH_SHORT).show();
+                    // use pos as per your requirment
+
                 }
             });
 
