@@ -49,26 +49,22 @@ public class Normal2Activity extends AppCompatActivity {
                     .rotationY(25f)
                     .build();
         }
-        
+
     }
 
     private class MyPagerAdapter extends PagerAdapter {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            TextView view = new TextView(Normal2Activity.this);
-            view.setText("Item "+position);
+            final TextView view = new TextView(Normal2Activity.this);
+            view.setText("Item " + position);
             view.setGravity(Gravity.CENTER);
             view.setBackgroundColor(Color.argb(255, position * 50, position * 10, position * 50));
-            view.setTag(position);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    int pos = Integer.parseInt(v.getTag().toString());
-                    Toast.makeText(Normal2Activity.this, "position: " + pos, Toast.LENGTH_SHORT).show();
-                    // use pos as per your requirment
-
+                    Toast.makeText(Normal2Activity.this, "position: " + position, Toast.LENGTH_SHORT).show();
+                    System.out.println("position:::::::::::::" + position);
                 }
             });
 
@@ -77,9 +73,8 @@ public class Normal2Activity extends AppCompatActivity {
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, final int position, Object object) {
             ((ViewPager) container).removeViewAt(position);
-//            container.removeView((View)object);
         }
 
         @Override
@@ -90,7 +85,6 @@ public class Normal2Activity extends AppCompatActivity {
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view.equals(object);
-//            return (view == object);
         }
     }
 
